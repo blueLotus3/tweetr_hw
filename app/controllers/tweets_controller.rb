@@ -27,6 +27,12 @@ end
         render(json: {tweet: tweet})
     end
 
+    ##Destroy Route
+    def destroy 
+        tweet = Tweet.destroy(params[:id])
+        render(status: 204)
+    end
+
     private
 
     def tweet_params
