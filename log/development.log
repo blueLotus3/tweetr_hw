@@ -134,3 +134,33 @@ Processing by TweetsController#index as HTML
 Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.3ms | Allocations: 968)
 
 
+Started GET "/tweets" for ::1 at 2021-02-23 14:05:58 -0800
+Processing by TweetsController#index as */*
+  Parameters: {"title"=>"where am i", "content"=>"gotta go where I want to go", "author"=>"troy lemons jr", "tweet"=>{"title"=>"where am i", "content"=>"gotta go where I want to go", "author"=>"troy lemons jr"}}
+  [1m[36mTweet Load (0.6ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets"[0m
+  ↳ app/controllers/tweets_controller.rb:4:in `index'
+Completed 200 OK in 94ms (Views: 44.4ms | ActiveRecord: 59.6ms | Allocations: 3642)
+
+
+Started PUT "/tweets/3" for ::1 at 2021-02-23 14:06:49 -0800
+Processing by TweetsController#update as */*
+  Parameters: {"title"=>"I'm where Im supposed to be", "content"=>"i go where i want to go", "author"=>"troy lemons jr", "id"=>"3", "tweet"=>{"title"=>"I'm where Im supposed to be", "content"=>"i go where i want to go", "author"=>"troy lemons jr"}}
+  [1m[36mTweet Load (0.3ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:25:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tweets_controller.rb:26:in `update'
+  [1m[36mTweet Update (1.2ms)[0m  [1m[33mUPDATE "tweets" SET "title" = $1, "content" = $2, "updated_at" = $3 WHERE "tweets"."id" = $4[0m  [["title", "I'm where Im supposed to be"], ["content", "i go where i want to go"], ["updated_at", "2021-02-23 22:06:49.988452"], ["id", 3]]
+  ↳ app/controllers/tweets_controller.rb:26:in `update'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tweets_controller.rb:26:in `update'
+Completed 200 OK in 69ms (Views: 0.4ms | ActiveRecord: 4.1ms | Allocations: 2456)
+
+
+Started GET "/tweets/3" for ::1 at 2021-02-23 14:06:54 -0800
+Processing by TweetsController#show as */*
+  Parameters: {"title"=>"I'm where Im supposed to be", "content"=>"i go where i want to go", "author"=>"troy lemons jr", "id"=>"3", "tweet"=>{"title"=>"I'm where Im supposed to be", "content"=>"i go where i want to go", "author"=>"troy lemons jr"}}
+  [1m[36mTweet Load (11.3ms)[0m  [1m[34mSELECT "tweets".* FROM "tweets" WHERE "tweets"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tweets_controller.rb:9:in `show'
+Completed 200 OK in 20ms (Views: 0.8ms | ActiveRecord: 11.3ms | Allocations: 615)
+
+
